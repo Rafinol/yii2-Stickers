@@ -21,6 +21,7 @@ class Orders extends \yii\db\ActiveRecord
     /**
      * @inheritdoc
      */
+
     public static function tableName()
     {
         return 'orders';
@@ -79,5 +80,40 @@ class Orders extends \yii\db\ActiveRecord
     public function getImages()
     {
         return $this->hasMany(Images::className(), ['id' => 'order_id']);
+    }
+
+
+    public function changeStatusToPhoto()
+    {
+        $this->status_id = Statuses::STATUS_PHOTO;
+        $this->save();
+    }
+
+    public function changeStatusToPayed()
+    {
+        $this->status_id = Statuses::STATUS_PAYED;
+        $this->save();
+    }
+
+    public function changeStatusToReady()
+    {
+        $this->status_id = Statuses::STATUS_READY;
+        $this->save();
+    }
+
+    public function changeStatusToPost()
+    {
+        $this->status_id = Statuses::STATUS_POST;
+        $this->save();
+    }
+
+    public static function create($user, $description)
+    {
+        $order = new Orders();
+        $order->status_id = Statuses::STATUS_NEW;
+        $order->user_id = $user->id;
+        $order->description = $description;
+        $order->save();
+        return $order;
     }
 }
