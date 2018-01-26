@@ -53,8 +53,8 @@ class Statuses extends \yii\db\ActiveRecord
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getId0()
+    public function getOrders()
     {
-        return $this->hasOne(Orders::className(), ['status_id' => 'id']);
+        return $this->hasMany(Orders::className(), ['id' => 'status_id']);
     }
 }

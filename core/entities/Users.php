@@ -55,8 +55,8 @@ class Users extends \yii\db\ActiveRecord
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getId0()
+    public function getOrders()
     {
-        return $this->hasOne(Orders::className(), ['user_id' => 'id']);
+        return $this->hasMany(Orders::className(), ['id' => 'user_id']);
     }
 }

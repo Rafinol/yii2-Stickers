@@ -55,9 +55,9 @@ class Orders extends \yii\db\ActiveRecord
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getId0()
+    public function getLogs()
     {
-        return $this->hasOne(Logs::className(), ['order_id' => 'id']);
+        return $this->hasMany(Logs::className(), ['id' => 'order_id']);
     }
 
     /**
