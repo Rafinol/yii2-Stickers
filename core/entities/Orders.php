@@ -75,4 +75,9 @@ class Orders extends \yii\db\ActiveRecord
     {
         return $this->hasOne(Users::className(), ['id' => 'user_id']);
     }
+
+    public function getImages()
+    {
+        return $this->hasMany(Images::className(), ['id' => 'order_id']);
+    }
 }

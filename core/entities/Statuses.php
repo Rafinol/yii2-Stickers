@@ -57,4 +57,6 @@ class Statuses extends \yii\db\ActiveRecord
     {
         return $this->hasMany(Orders::className(), ['id' => 'status_id']);
     }
+
+
 }
