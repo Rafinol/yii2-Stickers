@@ -64,4 +64,20 @@ class SiteController extends Controller
         return $this->render('index');
     }
 
+    public function actionTest()
+    {
+
+        Yii::$app->telegram->sendMessage([
+            'chat_id' => 165666400,
+            'text' => 'this is test',
+            'reply_markup' => json_encode([
+                'inline_keyboard'=>[
+                    [
+                        ['text'=>"refresh",'callback_data'=> time()]
+                    ]
+                ]
+            ]),
+        ] );
+    }
+
 }
